@@ -1,0 +1,27 @@
+body{
+    text-align: center;
+}
+.tabele{max-width:30%;}
+.tabele table{width:100%;}
+.tabele thead tr{background: #000;color:#fff;}
+.tabele tbody tr{background: #eee;}
+.tabele tr:nth-child(even){background: rgb(173, 195, 216);}
+.tabele tbody tr:hover{background: rgb(126, 201, 155);}
+.tabele td{padding:8px 4px;text-align: center;}
+
+.chair{
+    width: 100%;
+    height: 240px;
+}
+.level2{
+    width: 33%;
+    float: left;
+}
+.level3{
+    width: 20%;
+    float: left;
+}
+.level4{
+    width: 20%;
+    float: right;
+}
