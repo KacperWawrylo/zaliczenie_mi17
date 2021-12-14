@@ -3,25 +3,15 @@
     {
         private string $name;
         private string $color;
-        private string $setting;
     
-        function __construct($name,$color,$setting){
+        function __construct($name,$color){
             $this->name = $name;
             $this->color = $color;
-            $this->setting = $setting;
         }
         
         public function sit()
         {
             echo "siedze<br>";
-        }
-        public function setSetting($setting)
-        {
-            $this->setting = $setting;
-        }
-        public function getSetting()
-        {
-            return $this->setting = $setting;
         }
         public function setColor($color){
             $this->color=$color;
@@ -39,6 +29,6 @@
             return " Fotel o kolorze : ". $this->getColor(). " i nazwie :  ". $this->getName();
         }
     }
-    $chair = new Chair("diablo","czerwony","podniesiony");
+    $chair = new Chair("diablo","czerwony");
     print $chair;
 ?>

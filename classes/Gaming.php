@@ -2,34 +2,56 @@
    require_once "../Chair.php";
    class Gaming extends Chair
    {
-        private string $type;
+        private string $name;
         private string $color;
-        private string $setting;
         private int $price;
         private string $material;
         private string $armrest;
-        private string $model;
     
-        private function __construct($type,$name,$setting,$price,$material,$armrest,$model){
+        private function __construct($name,$color,$price,$material,$armrest){
             $this->name = $name;
             $this->color = $color;
-            $this->setting = $setting;
             $this->price = $price;
             $this->material = $material;
             $this->armrest = $armrest;
-            $this->model = $model;
         }
-
+        public function setColor($color){
+            $this->color=$color;
+        }
+        public function getColor(){
+            return $this->color;
+        }
+        public function setName($name){
+            $this->name = $name;
+        }
+        public function getName(){
+            return $this->name;
+        }
+        public function setPrice($price){
+            $this->price = $price;
+        }
+        public function getPrice(){
+            return $this->price;
+        }
+        public function setMaterial($material){
+            $this->material = $material;
+        }
+        public function getMaterial(){
+            return $this->material;
+        }
+        public function setArmrest($armrest){
+            $this->armrest = $armrest;
+        }
+        public function getArmrest(){
+            return $this->armrest;
+        }
+        public function __toString() {
+            return " Fotel o kolorze : ". $this->getColor(). " i nazwie :  ". $this->getName();
+        }
         public function sit()
         {
             echo "siedze<br>";
         }
-
-        public function setting($setting)
-        {
-            $this->setting = $setting;
-        }
-
         public function tilting(){
             echo "bujanie sie<br>";
         }
