@@ -40,29 +40,44 @@
         </div>   
     </center>
     <h1>Fotele</h1>
-    <div class="chair">
-        <img src="img/chair.png" alt="">
-    </div>
-    <div class = "level2">
-        <img src="img/biurowe.jpg" alt="biurowe">
-    </div>
-    <div class = "level2">
-        <img src="img/gaming.jpg" alt="gaming">
-    </div>
-    <div class = "level2">
-        <img src="img/forhome.jpg" alt="forhome">
-    </div>
-    <div class = "level3">
-        <img src="img/ergonomic.jpg" alt="ergonomiczne">
-    </div>
-    <div class="level3">
-        <img src="img/basic.png" alt="basic">
-    </div>
-    <div class="level4">
-        <img src="img/basicchair.png" alt="ba">
-    </div>
-    <div class="level4">
-        <img src="img/rockingchair.jpg" alt="rocking">
-    </div>
+        <?php
+            $conn = mysqli_connect("localhost","root","","zaliczenie_mi17");
+            $query = "SELECT imgSrc FROM classes WHERE level = 1;";
+            $sql = mysqli_query($conn,$query);
+            while($row = mysqli_fetch_array($sql)){
+                $imgSrc = $row["imgSrc"];
+                echo "<div class = 'level1'>";
+                echo "<img src='$imgSrc' alt='fotel'>";
+                echo "</div>";
+            }
+        ?>
+        <?php
+            $conn = mysqli_connect("localhost","root","","zaliczenie_mi17");
+            $query = "SELECT imgSrc ,id FROM classes WHERE level = 2;";
+            $sql = mysqli_query($conn,$query);
+            $l= mysqli_query($conn,"SELECT count(*) FROM classes WHERE level = 2;");
+            $l=mysqli_fetch_array($l);
+            $l = $l[0];
+            $l=100/$l;
+            while($row = mysqli_fetch_array($sql)){
+                $id = $row["id"];
+                $imgSrc = $row["imgSrc"];
+                echo "<div class = 'level2' id='$id' style='width:$l%';>";
+                echo "<img src='$imgSrc'>";
+                echo "</div>";
+            }
+            
+        ?>
+        <?php
+            $conn = mysqli_connect("localhost","root","","zaliczenie_mi17");
+            $query = "SELECT imgSrc FROM classes WHERE level = 3;";
+            $sql = mysqli_query($conn,$query);
+            while($row = mysqli_fetch_array($sql)){
+                $imgSrc = $row["imgSrc"];
+                echo "<div class = 'level3'>";
+                echo "<img src='$imgSrc'>";
+                echo "</div>";
+            }
+        ?>
 </body>
 </html>

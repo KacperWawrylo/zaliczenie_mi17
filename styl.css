@@ -9,12 +9,11 @@ body{
 .tabele tbody tr:hover{background: rgb(126, 201, 155);}
 .tabele td{padding:8px 4px;text-align: center;}
 
-.chair{
+.level1{
     width: 100%;
     height: 240px;
 }
 .level2{
-    width: 33%;
     float: left;
 }
 .level3{
