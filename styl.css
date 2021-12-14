@@ -8,7 +8,6 @@ body{
 .tabele tr:nth-child(even){background: rgb(173, 195, 216);}
 .tabele tbody tr:hover{background: rgb(126, 201, 155);}
 .tabele td{padding:8px 4px;text-align: center;}
-
 .level1{
     width: 100%;
     height: 240px;
@@ -17,10 +16,6 @@ body{
     float: left;
 }
 .level3{
-    width: 20%;
+    height: 260px;
     float: left;
-}
-.level4{
-    width: 20%;
-    float: right;
 }

@@ -40,44 +40,48 @@
         </div>   
     </center>
     <h1>Fotele</h1>
+    <div>
         <?php
             $conn = mysqli_connect("localhost","root","","zaliczenie_mi17");
-            $query = "SELECT imgSrc FROM classes WHERE level = 1;";
+            $query = "SELECT name , imgSrc FROM classes WHERE level = 1;";
             $sql = mysqli_query($conn,$query);
             while($row = mysqli_fetch_array($sql)){
+                $name = $row["name"];
                 $imgSrc = $row["imgSrc"];
                 echo "<div class = 'level1'>";
-                echo "<img src='$imgSrc' alt='fotel'>";
+                echo "<a href='forms/$name.php'><img src='$imgSrc'></a>";
                 echo "</div>";
             }
         ?>
         <?php
             $conn = mysqli_connect("localhost","root","","zaliczenie_mi17");
-            $query = "SELECT imgSrc ,id FROM classes WHERE level = 2;";
+            $query = "SELECT name , imgSrc ,id FROM classes WHERE level = 2;";
             $sql = mysqli_query($conn,$query);
             $l= mysqli_query($conn,"SELECT count(*) FROM classes WHERE level = 2;");
             $l=mysqli_fetch_array($l);
             $l = $l[0];
-            $l=100/$l;
+            $s=100/$l;
             while($row = mysqli_fetch_array($sql)){
                 $id = $row["id"];
+                $name = $row["name"];
                 $imgSrc = $row["imgSrc"];
-                echo "<div class = 'level2' id='$id' style='width:$l%';>";
-                echo "<img src='$imgSrc'>";
+                echo "<div class = 'level2' id='$id' style='width:$s%';>";
+                echo "<a href='forms/$name.php'><img src='$imgSrc'></a>";
                 echo "</div>";
-            }
-            
+            }   
+                $l = $l + 2;
+                for($x = 2; $x<$l;$x++){
+                    echo "<div class='level3' style='width:$s%';>";
+                    $query = "SELECT name,imgSrc FROM classes WHERE level = 3 AND parentId=$x;";
+                    $sql = mysqli_query($conn,$query);
+                        while($row = mysqli_fetch_array($sql)){
+                            $name = $row["name"];
+                            $imgSrc = $row["imgSrc"];
+                            echo "<a href='forms/$name.php'><img src='$imgSrc'></a>";
+                        }
+                    echo "</div>";
+                }
         ?>
-        <?php
-            $conn = mysqli_connect("localhost","root","","zaliczenie_mi17");
-            $query = "SELECT imgSrc FROM classes WHERE level = 3;";
-            $sql = mysqli_query($conn,$query);
-            while($row = mysqli_fetch_array($sql)){
-                $imgSrc = $row["imgSrc"];
-                echo "<div class = 'level3'>";
-                echo "<img src='$imgSrc'>";
-                echo "</div>";
-            }
-        ?>
+    </div>
 </body>
 </html>
